@@ -15,12 +15,20 @@ PASSWORD = os.environ.get("NAUKRI_PASSWORD")
 RESUME_PATH = os.path.abspath("Ajit Behera_DE.pdf")
 
 options = Options()
-#Note--headless=new tells Chrome to run without opening a visible browser window.
-# options.add_argument("--headless=new")
+
+# Run Chrome without opening a visible window
+options.add_argument("--headless=new")
+
+# Required for GitHub Actions Ubuntu
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920,1080")
+
+# Additional stability options
+options.add_argument("--disable-extensions")
+options.add_argument("--disable-notifications")
+
 options.add_argument(
     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 )
