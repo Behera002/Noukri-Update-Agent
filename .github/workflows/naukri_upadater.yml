@@ -1,0 +1,34 @@
+name: Naukri Profile Refresh Agent
+
+on:
+  schedule:
+    # Every day at 08:30 AM IST (03:00 UTC)
+    - cron: '0 3 * * *'
+
+    # Every day at 02:00 PM IST (08:30 UTC)
+    - cron: '30 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install selenium webdriver-manager
+
+      - name: Run Profile Updater
+        env:
+          NAUKRI_EMAIL: ${{ secrets.NAUKRI_EMAIL }}
+          NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
+        run: |
+          python naukri_update.py
