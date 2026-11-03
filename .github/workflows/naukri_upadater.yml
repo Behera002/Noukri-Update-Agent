@@ -40,3 +40,15 @@ jobs:
           NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
         run: |
           python naukri_update.py
+
+      - name: Upload Debug Files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naukri-debug-files
+          path: |
+            error.png
+            upload_error.png
+            upload_debug.html
+            upload_result.png
+          if-no-files-found: ignore
