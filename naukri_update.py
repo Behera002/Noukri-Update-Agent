@@ -17,7 +17,7 @@ load_dotenv()
 EMAIL = os.environ.get("NAUKRI_EMAIL")
 PASSWORD = os.environ.get("NAUKRI_PASSWORD")
 
-RESUME_PATH = os.path.abspath("Ajit Behera_DataEngineer")
+RESUME_PATH = os.path.abspath("Ajit Behera_DataEngineer.pdf")
 
 # Validate credentials
 if not EMAIL or not PASSWORD:
