@@ -13,7 +13,8 @@ on:
 
 jobs:
   update-profile:
-    runs-on: [self-hosted, Windows]
+    # runs-on: [self-hosted, Windows]     #ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
